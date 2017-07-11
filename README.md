@@ -104,3 +104,7 @@ Almost all of PHP 7 syntax is supported. Most constructs do vaguely what you'd e
   It works! You may need to add `var echo = document.write.bind(document); var global = window;` and patch a few other functions.
 
 <img src="./images/debugger.png" width="443" alt="Source maps and breakpoints work">
+
+## Thanks
+
+This project wouldn't happen without [ichiriac's PHP parser](https://www.npmjs.com/package/php-parser) and [Babel generator](https://www.npmjs.com/package/babel-generator).
