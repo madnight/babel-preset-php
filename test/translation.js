@@ -100,6 +100,7 @@ describe('AST translation', function() {
         translates("if (false) while(true) { $a--; }");
         translates("if (false) if (true) { --$a; }");
         translates("exit(1)", "throw die(1);");
+        translates('const FOO = 123;');
     });
 
     it('Exceptions', function() {
