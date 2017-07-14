@@ -22,6 +22,7 @@ describe('AST translation', function() {
         translates('(string)$x;', 'String(x);');
         translates('(object)$x;', 'Object(x);');
         translates('(array)$x;', 'Array.from(x);');
+        translates('fun(...[1,2,3]);');
     });
 
     it('Builtins', function() {
