@@ -102,6 +102,7 @@ describe('AST translation', function() {
         translates("if (false) if (true) { --$a; }");
         translates("exit(1)", "throw die(1);");
         translates('const FOO = 123;');
+        translates('foreach($a as $b => $d) foreach($d as $e => $f) {}', 'for (var b in a) {var d = a[b];for (var e in d) {var f = d[e];}}');
     });
 
     it('Exceptions', function() {
