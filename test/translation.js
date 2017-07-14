@@ -13,7 +13,8 @@ describe('AST translation', function() {
         translates("$d ?: 2", 'd ? d : 2;');
         translates("$a[1] + $b[Z]", "a[1] + b[Z];");
         translates("$b[$foo['Z']]", `b[foo.Z];`);
-        translates('"f\\no\\\\o"');
+        translates('"f\\no\\\\o" + "\\"`\\\\d`";');
+        translates('"\n\'encapsed\' \\\\ `$back`";', '`\\n\'encapsed\' \\\\ \\`${back}\\``;');
         translates('bar();');
         translates('eval($lol);');
         translates('(int)"1";', '+"1";');
