@@ -3,7 +3,8 @@ const translates = require('./helper');
 
 describe('AST translation', function() {
     it('Expressions', function() {
-        translates("2 + 2");
+        translates("1 + 2 + 3");
+        translates("1 - 2 - 3");
         translates("$a = null", 'var a = undefined;');
         translates("$a .= 'x'", 'a += "x";');
         translates("$a = NuLL;", 'var a = undefined;');

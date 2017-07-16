@@ -25,6 +25,6 @@
     "mocha": "^3.4.2"
   },
   "dependencies": {
-    "php-parser": "^2.0.4"
+    "php-parser": "^2.0.5"
   }
 }
