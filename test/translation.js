@@ -25,6 +25,8 @@ describe('AST translation', function() {
         translates('(object)$x;', 'Object(x);');
         translates('(array)$x;', 'Array.from(x);');
         translates('fun(...[1,2,3]);');
+        translates('$a = <<<HERE\nhi\nHERE;', 'var a = `hi\\n`;');
+        translates("$a = <<<'NOW'\nhi\nNOW;", 'var a = "hi";');
     });
 
     it('Builtins', function() {
@@ -110,6 +112,7 @@ describe('AST translation', function() {
         translates("exit(1)", "throw die(1);");
         translates('const FOO = 123;');
         translates('foreach($a as $b => $d) foreach($d as $e => $f) {}', 'for (var b in a) {var d = a[b];for (var e in d) {var f = d[e];}}');
+        translates('__halt_compiler(); this is werid!', '__halt_compiler(" this is werid!");');
     });
 
     it('Exceptions', function() {
