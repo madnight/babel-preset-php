@@ -79,6 +79,8 @@ describe('AST translation', function() {
 
     it('Functions', function() {
         translates("function bar($foo) {return $foo + 1;}");
+        translates("function gen() {yield 9;}", 'function* gen() {yield 9;};');
+        translates("function gen() {yield 'foo' => 1;}", 'function* gen() {yield ["foo",1];};');
         translates("function bar($foo) {$foo = 2;}");
         translates("function bar(TypeName $foo) {$foo = 2;}", 'function bar(foo: TypeName) {foo = 2;};');
         translates("$a=1; function bar() {$a = 2;}", 'var a=1; function bar() {var a = 2;};');
