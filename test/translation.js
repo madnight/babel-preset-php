@@ -35,6 +35,7 @@ describe('AST translation', function() {
         translates('isset($x[$y], $z);', 'undefined !== x[y] && undefined !== z;');
         translates('empty($x[$y]);', '!x[y];');
         translates('unset($x[$y]);', 'delete x[y];');
+        translates('clone $x[$y][&y];', 'clone(x[y][y]);');
         translates('function is_bool(){}; is_bool($x);');
         translates('__FILE__;', '__filename;');
         translates('__DIR__;', '__dirname;');
