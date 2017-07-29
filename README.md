@@ -27,7 +27,7 @@ class Foo extends Bar.Baz {
 
 ## Usage
 
-This is a [Babel](https://babeljs.io/) preset. Install it with `npm i -S babel-preset-php`. Configure it the same way you'd configure other presets such as `es2015`. For example, set `.babelrc` to:
+You must have Node.js 7 or later. This is a [Babel](https://babeljs.io/) preset. Install it with `npm i -S babel-preset-php`. Configure it the same way you'd configure other presets such as `es2015`. For example, set `.babelrc` to:
 
 ```json
 {
