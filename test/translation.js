@@ -2,6 +2,13 @@ const assert = require('assert');
 const translates = require('./helper');
 
 describe('AST translation', function() {
+    it('Language', function() {
+        translates("// foo", "// foo");
+        translates("/* foo */", "// foo");
+        translates("/* foo */ $a = 1; /* bar */", "// foo\n// bar\nvar a = 1;");
+        translates("/* foo\r\n * bar\r\n*/", "// foo\n// bar");
+    });
+
     it('Expressions', function() {
         translates("1 + 2 + 3");
         translates("1 - 2 - 3");
