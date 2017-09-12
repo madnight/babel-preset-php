@@ -1,6 +1,6 @@
 {
   "name": "babel-preset-php",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "Convert PHP7 to JavaScript via Babel preset",
   "main": "index.js",
   "scripts": {
@@ -21,8 +21,8 @@
   "author": "Kornel Lesiński <kornel@geekhood.net> (https://kornel.ski/)",
   "license": "MIT",
   "devDependencies": {
-    "babel-core": "^6.25.0",
-    "mocha": "^3.4.2"
+    "babel-core": "^6.26.0",
+    "mocha": "^3.5.3"
   },
   "dependencies": {
     "php-parser": "^2.0.7"
