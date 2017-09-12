@@ -164,8 +164,10 @@ describe('AST translation', function() {
         translates('class Foo {function __construct($bla){parent::foo();}}', 'class Foo {constructor(bla){super.foo();}};');
         translates('class Foo {function __construct($bla){parent::__construct();}}', 'class Foo {constructor(bla){super();}};');
         translates('class Foo {function bar($z){$this->{$meta} = 2;}}', 'class Foo {bar(z){this[meta]=2;}};');
-        translates('class Foo {static function bar($z){self::bar();}}', 'class Foo {static bar(z){this.bar();}};');
-        translates('class Foo {function bar(){self::CON;}}', 'class Foo {bar(){this.constructor.CON;}};');
+        translates('class Foo {static function bar($z){self::bar();}}', 'class Foo {static bar(z){Foo.bar();}};');
+        translates('class Foo {static function bar($z){static::bar();}}', 'class Foo {static bar(z){this.bar();}};');
+        translates('class Foo {function bar(){self::CON;}}', 'class Foo {bar(){Foo.CON;}};');
+        translates('class Foo {function bar(){static::CON;}}', 'class Foo {bar(){this.constructor.CON;}};');
         translates('class Foo {private function bar($z=1){} protected function quz(){$this->bar();}}',
             'class Foo {bar(z=1){} quz(){this.bar();}};');
     });
@@ -174,6 +176,8 @@ describe('AST translation', function() {
         translates('class Foo {const Z=1;}', 'class Foo {static Z=1;};');
         translates('class Foo {static $z=1;}', 'class Foo {static z=1;};');
         translates('class Foo {private static $z=1; static function x(){self::$z;self::${z()};}}',
+            'class Foo {static z=1; static x(){Foo.z;Foo[z()];}};');
+        translates('class Foo {private static $z=1; static function x(){static::$z;static::${z()};}}',
             'class Foo {static z=1; static x(){this.z;this[z()];}};');
         translates('class Foo {var $z=1;}', 'class Foo {constructor(){this.z=1;}};');
         translates('class Foo extends Bar {var $z=1;}', 'class Foo extends Bar {constructor(){super(...arguments);this.z=1;}};');
